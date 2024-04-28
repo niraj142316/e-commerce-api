@@ -9,7 +9,18 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = ['http://localhost:3000'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 
 // Database connection with MongoDB
 mongoose.connect("mongodb+srv://nirajpc1416:Ihatesorries14@first-cluster.iptv9nr.mongodb.net/e-commerce");
