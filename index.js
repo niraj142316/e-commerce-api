@@ -11,7 +11,7 @@ const port=process.env.PORT || 4000;
 app.use(express.json());
 
 //using this the react based project will connect to express.js project on the port 4000
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000','https://e-commerce-website-git-main-niraj142316s-projects.vercel.app'];
 
 app.use(cors({
   origin: function (origin, callback) {
